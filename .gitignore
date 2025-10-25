@@ -1,0 +1,69 @@
+# ========================================
+# PYTHON
+# ========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.so
+
+# ========================================
+# DJANGO
+# ========================================
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+.env
+.env.*
+.envrc
+instance/
+.DS_Store
+
+# ========================================
+# VIRTUAL ENVIRONMENTS
+# ========================================
+venv/
+env/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+
+# ========================================
+# IDE & EDITOR FILES
+# ========================================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ========================================
+# TEST & COVERAGE FILES
+# ========================================
+htmlcov/
+.tox/
+.nox/
+.coverage
+coverage.xml
+*,cover
+.pytest_cache/
+nosetests.xml
+test-results/
+
+# ========================================
+# DOCKER
+# ========================================
+# Don’t track Docker build/cache files
+**/__pycache__/
+*.pid
+*.seed
+*.pid.lock
+docker-compose.override.yml
+.docker/
+.dockerignore
+Dockerfile*
+build/

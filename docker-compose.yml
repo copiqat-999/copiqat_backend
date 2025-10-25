@@ -1,0 +1,62 @@
+# Name the docker compose project
+name: copiqat-project
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: copiqat
+    container_name: copiqat
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    depends_on:
+      - copiqat-db
+
+  copiqat-db:
+    container_name: copiqat-db
+    image: postgres:17
+    restart: always
+    environment:
+      POSTGRES_DB: copiqat
+      POSTGRES_USER: copiqat-dev
+      POSTGRES_PASSWORD: yourpassword123
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    container_name: copiqat-redis
+    ports:
+      - "6379:6379"
+    restart: always
+
+  celery:
+    build: .
+    container_name: celery
+    command: celery -A copiqat worker -l info
+    volumes:
+      - .:/code
+    env_file:
+      - .env
+    depends_on:
+      - copiqat-db
+      - redis
+
+  celery-beat:
+    build: .
+    command: celery -A copiqat beat --loglevel=info --scheduler celery.beat:PersistentScheduler
+    volumes:
+      - celery_data:/app/celerybeat
+    depends_on:
+      - redis
+      - app
+    env_file:
+      - .env
+
+volumes:
+  celery_data:
