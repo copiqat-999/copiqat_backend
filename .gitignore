@@ -71,3 +71,14 @@ build/
 
 .env
 env/
+
+db.sqlite3
+media/
+staticfiles/
+
+# Media uploads
+/media/
+
+# Static files (if collected)
+staticfiles/
+static/
