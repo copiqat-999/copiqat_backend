@@ -25,8 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-DEBUG = config('DEBUG', default=False, cast=bool)
-SECRET_KEY = config('SECRET_KEY')
+DEBUG = config("DEBUG", default=False, cast=bool)
+SECRET_KEY = config("SECRET_KEY")
 
 ALLOWED_HOSTS = ["localhost"]
 
@@ -108,9 +108,7 @@ WSGI_APPLICATION = "copiqat.wsgi.application"
 #     }
 # }
 
-DATABASES = {
-    'default': dj_database_url.parse(config('DATABASE_URL'))
-}
+DATABASES = {"default": dj_database_url.parse(config("DATABASE_URL"))}
 
 
 # Password validation
@@ -191,8 +189,8 @@ REST_FRAMEWORK = {
         "password_reset": "3/min",
     },
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 6,  # Number of traders per page
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 6,  # Number of traders per page
 }
 
 if DEBUG:
@@ -211,9 +209,12 @@ ANYMAIL = {
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = BASE_DIR / 'static'
+STATIC_URL = "/static/"
+STATIC_ROOT = [BASE_DIR / "staticfiles"]
+
+
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
@@ -251,7 +252,6 @@ CELERY_BEAT_SCHEDULE = {
 }
 
 
-
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -263,5 +263,3 @@ LOGGING = {
         "level": "INFO",
     },
 }
-
-
