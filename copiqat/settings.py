@@ -28,13 +28,35 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = config("DEBUG", default=False, cast=bool)
 SECRET_KEY = config("SECRET_KEY")
 
-ALLOWED_HOSTS = ["copiqat-api-production.up.railway.app", "localhost", "127.0.0.1"]
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "http://localhost:3000",  # React dev server
+    "http://127.0.0.1:3000",
+    "https://copiqat-api-production.up.railway.app",  # production domain
 ]
 
+# Optional but useful when testing with Postman
+CORS_ALLOW_CREDENTIALS = True
+
+
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+RAILWAY_URL = os.environ.get("RAILWAY_PUBLIC_DOMAIN")
+if RAILWAY_URL:
+    ALLOWED_HOSTS.append(RAILWAY_URL)
+
+
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://localhost",
+    "https://127.0.0.1",
+]
+
+RAILWAY_URL = os.environ.get("RAILWAY_PUBLIC_DOMAIN")
+if RAILWAY_URL:
+    CSRF_TRUSTED_ORIGINS.append(f"https://{RAILWAY_URL}")
 
 # Application definition
 
