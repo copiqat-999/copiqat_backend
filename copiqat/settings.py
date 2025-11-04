@@ -252,7 +252,7 @@ TWELVE_DATA_API_KEY = os.getenv("TWELVE_DATA_API_KEY")
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://copiqat-redis:6379/1",  # use the Redis container's name as the host
+        "LOCATION": os.getenv("REDIS_URL", "redis://localhost:6379/1"),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
             # "SERIALIZER": "trades.cache_serializers.JSONSerializer",
