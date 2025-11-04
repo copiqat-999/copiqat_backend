@@ -28,7 +28,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = config("DEBUG", default=False, cast=bool)
 SECRET_KEY = config("SECRET_KEY")
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["copiqat-api-production.up.railway.app", "localhost", "127.0.0.1"]
+
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
