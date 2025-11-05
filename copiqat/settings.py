@@ -29,7 +29,6 @@ DEBUG = config("DEBUG", default=False, cast=bool)
 SECRET_KEY = config("SECRET_KEY")
 
 
-
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # React dev server
     "http://127.0.0.1:3000",
@@ -40,13 +39,10 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_CREDENTIALS = True
 
 
-
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 RAILWAY_URL = os.environ.get("RAILWAY_PUBLIC_DOMAIN")
 if RAILWAY_URL:
     ALLOWED_HOSTS.append(RAILWAY_URL)
-
-
 
 
 CSRF_TRUSTED_ORIGINS = [
@@ -236,13 +232,15 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
-
 STORAGES = {
-    # ...
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
 
 FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY")
 
