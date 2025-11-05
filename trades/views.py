@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView
 from rest_framework import status
 from .serializers import DashboardSerializer
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from django.conf import settings
 from rest_framework import serializers
 from django.shortcuts import get_object_or_404
@@ -102,7 +102,7 @@ class UserTradesView(APIView):
             # Calculate PL%
             try:
                 pl_percent = (pl_value / trade.entry_price) * 100
-            except (ZeroDivisionError, Decimal.InvalidOperation):
+            except (ZeroDivisionError, InvalidOperation):
                 pl_percent = Decimal("0.00")
 
             trade_list.append(
