@@ -55,7 +55,7 @@ class DashboardView(APIView):
             "referral_link": f"http://localhost:3000/auth/signup?ref={user.referral_code}",
         }
 
-        serializer = DashboardSerializer(data)
+        serializer = DashboardSerializer(data)  # ✅ correct usage
         return Response(serializer.data)
 
 
