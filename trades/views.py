@@ -45,6 +45,7 @@ class DashboardView(APIView):
             "balance": vault.balance if vault else 0.00,
             "earning": vault.earning if vault else 0.00,
             "daily_pl": vault.daily_pl if vault else 0.00,
+            "today": vault.today if vault else 0.00,
             "weekly_pl": vault.weekly_pl if vault else 0.00,
             "monthly_pl": vault.monthly_pl if vault else 0.00,
             "active_trades_count": BuyAndSell.objects.filter(
