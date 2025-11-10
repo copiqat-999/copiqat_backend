@@ -137,6 +137,7 @@ class DepositSerializer(serializers.ModelSerializer):
 class DashboardSerializer(serializers.Serializer):
     balance = serializers.DecimalField(max_digits=12, decimal_places=2)
     earning = serializers.DecimalField(max_digits=12, decimal_places=2)
+    today = serializers.DecimalField(max_digits=12, decimal_places=2)
     daily_pl = serializers.DecimalField(max_digits=12, decimal_places=2)
     weekly_pl = serializers.DecimalField(max_digits=12, decimal_places=2)
     monthly_pl = serializers.DecimalField(max_digits=12, decimal_places=2)
