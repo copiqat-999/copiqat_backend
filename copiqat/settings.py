@@ -39,21 +39,24 @@ CORS_ALLOWED_ORIGINS = [
 # Optional but useful when testing with Postman
 CORS_ALLOW_CREDENTIALS = True
 
+ALLOWED_HOSTS = [
+    "api.copiqat.trade",
+    ".railway.app",  # for Railway internal checks
+]
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
-RAILWAY_URL = os.environ.get("RAILWAY_PUBLIC_DOMAIN")
-if RAILWAY_URL:
-    ALLOWED_HOSTS.append(RAILWAY_URL)
+# RAILWAY_URL = os.environ.get("RAILWAY_PUBLIC_DOMAIN")
+# if RAILWAY_URL:
+#     ALLOWED_HOSTS.append(RAILWAY_URL)
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://localhost",
-    "https://127.0.0.1",
+    "https://api.copiqat.trade",
 ]
 
-RAILWAY_URL = os.environ.get("RAILWAY_PUBLIC_DOMAIN")
-if RAILWAY_URL:
-    CSRF_TRUSTED_ORIGINS.append(f"https://{RAILWAY_URL}")
+
+# RAILWAY_URL = os.environ.get("RAILWAY_PUBLIC_DOMAIN")
+# if RAILWAY_URL:
+#     CSRF_TRUSTED_ORIGINS.append(f"https://{RAILWAY_URL}")
 
 # Application definition
 
