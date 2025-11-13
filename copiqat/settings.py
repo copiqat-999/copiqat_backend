@@ -40,6 +40,9 @@ CORS_ALLOW_CREDENTIALS = True
 
 ALLOWED_HOSTS = [
     "api.copiqat.trade",
+    "copiqat.trade",
+    "www.copiqat.trade",
+
     ".railway.app",  # for Railway internal checks
 ]
 
@@ -49,8 +52,16 @@ ALLOWED_HOSTS = [
 
 
 CSRF_TRUSTED_ORIGINS = [
+    "https://copiqat.trade",
+    "https://www.copiqat.trade",
     "https://api.copiqat.trade",
 ]
+
+
+# Recommended production settings
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 
 # RAILWAY_URL = os.environ.get("RAILWAY_PUBLIC_DOMAIN")
