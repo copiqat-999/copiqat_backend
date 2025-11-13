@@ -30,10 +30,9 @@ SECRET_KEY = config("SECRET_KEY")
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React dev server
-    "http://127.0.0.1:3000",
-    "https://copiqat.vercel.app",
-    "https://copiqat-api-production.up.railway.app",  # production domain
+    "https://copiqat.trade",
+    "https://www.copiqat.trade",
+    "https://api.copiqat.trade",  # production domain
 ]
 
 # Optional but useful when testing with Postman
