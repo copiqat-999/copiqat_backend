@@ -197,7 +197,7 @@ AUTHENTICATION_BACKENDS = [
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=20),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=5),
     "BLACKLIST_AFTER_ROTATION": True,
     "TOKEN_BLACKLIST_ENABLED": True,
     "AUTH_HEADER_TYPES": ("Bearer",),
@@ -226,7 +226,7 @@ REST_FRAMEWORK = {
     },
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-    "PAGE_SIZE": 10,  # Number of traders per page
+    "PAGE_SIZE": 12,  # Number of traders per page
 }
 
 if DEBUG:
@@ -234,7 +234,7 @@ if DEBUG:
 
 
 # Looking to send emails in production? Check out our Email API/SMTP product!
-DEFAULT_FROM_EMAIL = "copiqat@gmail.com"
+DEFAULT_FROM_EMAIL = "support@copiqat.trade"
 EMAIL_BACKEND = "anymail.backends.sendinblue.EmailBackend"
 ANYMAIL = {
     "SENDINBLUE_API_KEY": os.getenv("SENDINBLUE_API_KEY"),
