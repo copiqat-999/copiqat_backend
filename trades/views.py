@@ -52,7 +52,7 @@ class DashboardView(APIView):
                 user=user, trade_status="open"
             ).count(),
             "referral_count": user.referral_count,
-            "referral_link": f"http://localhost:3000/auth/signup?ref={user.referral_code}",
+            "referral_link": f"https://www.copiqat.trade/auth/signup?ref={user.referral_code}",
         }
 
         serializer = DashboardSerializer(data)  # ✅ correct usage
